@@ -399,7 +399,8 @@ VITE_API_BASE_URL=
 
 # 📷 Screenshots
 
-Add screenshots here after deployment.
+<img width="959" height="413" alt="image" src="https://github.com/user-attachments/assets/22918883-da6d-403f-8c1f-52f789258541" />
+
 
 ```
 Login Page
