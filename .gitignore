@@ -1,4 +1,4 @@
-# Node modules
+git push -u origin main# Node modules
 node_modules/
 
 # Build output
@@ -12,6 +12,7 @@ frontend/.env
 
 # Local database files
 backend/data/
+data/
 
 # Logs
 npm-debug.log*

@@ -1,3 +1,20 @@
+# Fundsroom
+
+## Submission summary
+
+- GitHub repository link: https://github.com/Tanishkanayak/Mini-Erp-Crm
+- Live frontend URL: http://localhost:5173/
+- Live backend API URL: http://localhost:5000/api
+- Test login credentials:
+  - Admin: admin@fundsroom.com / admin123
+  - Other roles: not available in the current demo build
+- Postman collection / API documentation: [docs/api.md](docs/api.md) and [docs/postman_collection.json](docs/postman_collection.json)
+- README with setup and deployment instructions: this file
+- Short architecture explanation: React and Vite power the frontend, an Express and TypeScript backend handles API logic, and data is stored locally in Better-SQLite3 with JWT-based authentication.
+- Known limitations: only the seeded admin account is available in the current demo, role-based access is minimal, and the app uses local SQLite storage suitable for demos rather than large-scale production deployments.
+
+---
+
 # 🚀 ERP-CRM Operations Portal
 
 > A modern full-stack ERP & CRM solution built for wholesale and distribution businesses. The application streamlines customer management, inventory tracking, sales challan generation, and role-based operations through a secure and scalable architecture.
