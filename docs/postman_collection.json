@@ -1,0 +1,82 @@
+{
+  "info": {
+    "name": "Fundsroom API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/health",
+          "host": ["http://localhost:5000"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@fundsroom.com\",\n  \"password\": \"admin123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "host": ["http://localhost:5000"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "List Customers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/customers",
+          "host": ["http://localhost:5000"],
+          "path": ["api", "customers"]
+        }
+      }
+    },
+    {
+      "name": "Create Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Rajesh Kumar\",\n  \"mobile\": \"9876543210\",\n  \"email\": \"rajesh@example.com\",\n  \"business_name\": \"North Star Traders\",\n  \"gst_number\": \"27ABCDE1234F1Z5\",\n  \"customer_type\": \"Wholesale\",\n  \"address\": \"Mumbai, Maharashtra\",\n  \"status\": \"Active\",\n  \"follow_up_date\": \"2026-08-10\",\n  \"notes\": \"Prefers evening delivery\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/customers",
+          "host": ["http://localhost:5000"],
+          "path": ["api", "customers"]
+        }
+      }
+    }
+  ]
+}

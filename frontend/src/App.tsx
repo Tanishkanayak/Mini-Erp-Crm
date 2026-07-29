@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 
 interface User { id: number; name: string; email: string; role: string; token?: string; }
 
@@ -65,13 +65,25 @@ function App() {
   if (!user) {
     return (
       <div className="auth-shell">
-        <form className="auth-card" onSubmit={handleLogin}>
-          <h1>Fundsroom ERP</h1>
-          <p>Wholesale distribution control center</p>
-          <input value={loginForm.email} onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })} placeholder="Email" />
-          <input type="password" value={loginForm.password} onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })} placeholder="Password" />
-          <button type="submit">Sign in</button>
-        </form>
+        <div className="auth-card">
+          <div className="auth-brand">
+            <div className="brand-mark">FR</div>
+            <div>
+              <h1>Fundsroom ERP</h1>
+              <p>Smarter wholesale operations, beautifully organized.</p>
+            </div>
+          </div>
+          <div className="feature-pills">
+            <span>Customer CRM</span>
+            <span>Inventory flow</span>
+            <span>Smart challans</span>
+          </div>
+          <form className="auth-form" onSubmit={handleLogin}>
+            <input value={loginForm.email} onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })} placeholder="Email" />
+            <input type="password" value={loginForm.password} onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })} placeholder="Password" />
+            <button type="submit">Sign in</button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -79,16 +91,32 @@ function App() {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <h2>Fundsroom</h2>
+        <div className="sidebar-brand">
+          <div className="brand-mark">FR</div>
+          <div>
+            <h2>Fundsroom</h2>
+            <p>Operations hub</p>
+          </div>
+        </div>
         <nav>
-          <Link to="/">Dashboard</Link>
-          <Link to="/customers">Customers</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/challans">Challans</Link>
+          <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Dashboard</NavLink>
+          <NavLink to="/customers" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Customers</NavLink>
+          <NavLink to="/products" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Products</NavLink>
+          <NavLink to="/challans" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Challans</NavLink>
         </nav>
-        <button onClick={logout}>Logout</button>
+        <div className="sidebar-footer">
+          <p>Everything in one place</p>
+          <button onClick={logout}>Logout</button>
+        </div>
       </aside>
       <main className="main-content">
+        <header className="topbar">
+          <div>
+            <p className="eyebrow">Welcome back</p>
+            <h1>{user.name}</h1>
+          </div>
+          <div className="topbar-pill">Live dashboard</div>
+        </header>
         <Routes>
           <Route path="/" element={<Dashboard customers={customers} products={products} challans={challans} />} />
           <Route path="/customers" element={<CustomersView />} />
@@ -104,11 +132,30 @@ function App() {
 function Dashboard({ customers, products, challans }: { customers: any[]; products: any[]; challans: any[] }) {
   return (
     <div>
-      <h1>Dashboard</h1>
       <div className="stats-grid">
-        <div className="card">Customers: {customers.length}</div>
-        <div className="card">Products: {products.length}</div>
-        <div className="card">Challans: {challans.length}</div>
+        <div className="card stat-card accent-emerald">
+          <p className="stat-label">Customers</p>
+          <h2>{customers.length}</h2>
+          <span>Active relationships</span>
+        </div>
+        <div className="card stat-card accent-violet">
+          <p className="stat-label">Products</p>
+          <h2>{products.length}</h2>
+          <span>Ready to sell</span>
+        </div>
+        <div className="card stat-card accent-coral">
+          <p className="stat-label">Challans</p>
+          <h2>{challans.length}</h2>
+          <span>Tracked orders</span>
+        </div>
+      </div>
+      <div className="card dashboard-panel">
+        <h2>What you can do next</h2>
+        <ul>
+          <li>Review new customer leads and follow-ups.</li>
+          <li>Keep stock levels healthy with product tracking.</li>
+          <li>Create polished challans in seconds.</li>
+        </ul>
       </div>
     </div>
   );
